@@ -1,0 +1,2 @@
+# HIUnattendedReport_PicUpload
+哈尔滨工程大学平安行动自动化打卡-截图上传组件
