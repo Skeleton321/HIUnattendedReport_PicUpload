@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>API描述</title>
+</head>
+<body>
+<center>
+    <table border="1">
+        <tr>
+            <th>请求地址</th>
+            <th>请求方法</th>
+            <th>参数</th>
+            <th>描述</th>
+        </tr>
+        <tr>
+            <td class="domain"></td>
+            <td>GET</td>
+            <td></td>
+            <td>API描述页面</td>
+        </tr>
+        <tr>
+            <td class="domain">/send_img</td>
+            <td>POST</td>
+            <td>group=${group_id}&img=${img_base64}<br/>或<br/>group=${group_id}&url=${img_url}</td>
+            <td>将图片上传至指定群</td>
+        </tr>
+        <tr>
+            <td class="domain">/login</td>
+            <td>GET</td>
+            <td></td>
+            <td>登录</td>
+        </tr>
+        <tr>
+            <td class="domain">/logout</td>
+            <td>GET</td>
+            <td></td>
+            <td>登出</td>
+        </tr>
+    </table>
+</center>
+<script>
+    var list = document.getElementsByClassName('domain');
+    console.log(list);
+    console.log(list.length);
+    for(var i = 0; i < list.length; i++){console.log(list[i]);list[i].innerHTML = window.location.host + list[i].innerHTML;}
+</script>
+</body>
+</html>

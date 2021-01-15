@@ -1,0 +1,55 @@
+buildscript{
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:5.0.0'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.21'
+}
+
+def VERSION = "0.1.0"
+group 'net.qzwxsaedc'
+version VERSION
+
+repositories {
+    maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter'}
+    mavenCentral()
+    jcenter()
+    maven { url 'https://dl.bintray.com/kotlin/kotlin-eap'}
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/net.mamoe/mirai-core-jvm
+    compile group: 'net.mamoe', name: 'mirai-core-jvm', version: '2.0-M2'
+    // https://mvnrepository.com/artifact/io.netty/netty-all
+    compile group: 'io.netty', name: 'netty-all', version: '4.1.58.Final'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.0-alpha1'
+}
+
+tasks.withType(Javadoc).all { enabled = false }
+
+apply plugin: 'com.github.johnrengelman.shadow'
+shadowJar {
+    baseName = 'UnattendedReport_PicUpload'
+    classifier = null
+    version = "v$VERSION"
+    manifest {
+        attributes(
+                'Main-Class': 'net.qzwxsaedc.hiunattendedreport.Main'
+        )
+    }
+    into('assets') {
+        from 'assets'
+    }
+}
+//tasks.withType(JavaCompile) {
+//    options.encoding = "GB18030"
+//}
